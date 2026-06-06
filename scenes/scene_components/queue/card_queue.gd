@@ -15,6 +15,7 @@ var active_row: int = 1
 var pending_slot: Vector2i = Vector2i(-1, -1)
 signal queue_is_full
 signal discard
+signal setup
 
 func _ready() -> void:
 	for row in grid:
@@ -24,6 +25,7 @@ func _ready() -> void:
 				btn.mouse_filter = Control.MOUSE_FILTER_IGNORE
 				btn.modulate.a = 0.3
 				btn.pressed.connect(_on_queue_button_pressed.bind(btn))
+	setup.emit()
 	_pick_pending_slot()
 
 # --- Grid Helpers ---
@@ -62,26 +64,29 @@ func _find_slot_index(card: CardResource) -> Vector2i:
 			return Vector2i(row, idx)
 	return Vector2i(-1, -1)
 
-func _pick_pending_slot() -> void:
-	# clear previous highlight
+# --- Pending / Highlight ---
+func _set_pending_slot(target: Vector2i) -> void:
 	if pending_slot != Vector2i(-1, -1):
 		var old_btn = get_node_or_null("Layout/Row%d/Slot%d/Button" % [pending_slot.x, pending_slot.y + 1])
 		if old_btn:
 			old_btn.modulate.a = 0.3
-	# pick new one
+	pending_slot = target
+	if pending_slot == Vector2i(-1, -1):
+		return
+	var btn = get_node_or_null("Layout/Row%d/Slot%d/Button" % [pending_slot.x, pending_slot.y + 1])
+	if btn:
+		btn.modulate.a = 1.0
+
+func _pick_pending_slot() -> void:
 	var open = []
 	for row in range(1, grid.size() + 1):
 		for i in range(grid[row].size()):
 			if grid[row][i] == null:
 				open.append(Vector2i(row, i))
 	if open.is_empty():
-		pending_slot = Vector2i(-1, -1)
+		_set_pending_slot(Vector2i(-1, -1))
 		return
-	pending_slot = open[randi() % open.size()]
-	# highlight it
-	var btn = get_node_or_null("Layout/Row%d/Slot%d/Button" % [pending_slot.x, pending_slot.y + 1])
-	if btn:
-		btn.modulate.a = 1.0
+	_set_pending_slot(open[randi() % open.size()])
 
 # --- Methods ---
 func add_card(card: CardResource) -> Node:
@@ -98,11 +103,11 @@ func add_card(card: CardResource) -> Node:
 		push_error("CardQueue: missing node for row %d slot %d" % [row, slot_number])
 		return null
 	grid[row][index] = card
-	pending_slot = Vector2i(-1, -1)  # ← add this
+	pending_slot = Vector2i(-1, -1)
+	button.modulate.a = 0.3  # reset before picking a new pending slot
 	slot.button = button
 	slot.assign(card)
 	button.mouse_filter = Control.MOUSE_FILTER_STOP
-	button.modulate.a = 0.3
 	_pick_pending_slot()
 	return slot
 
@@ -121,9 +126,8 @@ func remove_card(button: Button) -> void:
 	tw.tween_callback(func():
 		slot.clear()
 		slot.is_clearing = false
+		_set_pending_slot(Vector2i(row_number, slot_number - 1))
 	)
-	_pick_pending_slot()
-
 
 func lock_queue_slot(slot: Node) -> void:
 	var slot_number = int(slot.name.lstrip("Slot"))
