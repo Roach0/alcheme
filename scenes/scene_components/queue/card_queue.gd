@@ -99,8 +99,8 @@ func add_card(card: CardResource) -> Node:
 	slot.button = button
 	slot.assign(card)
 	button.mouse_filter = Control.MOUSE_FILTER_STOP
-	button.modulate.a = 1.0
-	_pick_pending_slot()  
+	button.modulate.a = 0.3
+	_pick_pending_slot()
 	return slot
 
 func remove_card(button: Button) -> void:
@@ -110,7 +110,6 @@ func remove_card(button: Button) -> void:
 	var row_number = int(row_node.name.lstrip("Row"))
 	var card = slot.card
 	grid[row_number][slot_number - 1] = null
-	_pick_pending_slot()
 	discard.emit(card)
 	button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	button.modulate.a = 0.3
@@ -120,6 +119,7 @@ func remove_card(button: Button) -> void:
 		slot.clear()
 		slot.is_clearing = false
 	)
+	_pick_pending_slot()
 
 
 func lock_queue_slot(slot: Node) -> void:
