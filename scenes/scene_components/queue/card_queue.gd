@@ -10,6 +10,7 @@ extends MarginContainer
 
 signal queue_is_full
 signal discard
+signal setup
 
 func _ready() -> void:
 	setup.emit
