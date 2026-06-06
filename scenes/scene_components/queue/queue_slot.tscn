@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://yyywme8y3taq" path="res://scenes/scene_components/queue/queue_slot.gd" id="1_e7y77"]
 
 [node name="QueueSlot" type="MarginContainer" unique_id=1855721455]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(50, 50)
 anchors_preset = -1
-anchor_right = 0.56200004
-anchor_bottom = 1.0
-offset_right = 0.57592773
+anchor_right = 0.28100002
+anchor_bottom = 0.5
+offset_right = 0.28796387
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6

@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="QueueLock" format=3 uid="uid://ddirli36laew6"]
-
-[ext_resource type="Script" uid="uid://djwkaiwchxhk7" path="res://scenes/scene_components/deck/cards/effects/base_effects/queue_lock.gd" id="1_pcjp1"]
-
-[resource]
-script = ExtResource("1_pcjp1")
-target = 1
-metadata/_custom_type_script = "uid://djwkaiwchxhk7"

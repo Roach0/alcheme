@@ -1,29 +1,22 @@
 extends MarginContainer
-class_name QueueSlot
 
 @onready var icon_rect = $Layout/BG
-
 @export var drop_offset: Vector2 = Vector2(0, -300)
 @export var duration: float = 0.55
-
 var card: CardResource = null
+var button: Button = null
 var _active_tween: Tween = null
-
-
-# flags
-var is_clearing:bool = false
-
-signal discard_request(card: CardResource)
-
+var is_clearing: bool = false
 
 func _ready() -> void:
+	icon_rect.z_index = 1
 	clear()
 
-# queries
+# --- Queries ---
 func is_empty() -> bool:
 	return card == null and not is_clearing
 
-# data methods
+# --- Data Methods ---
 func assign(data: CardResource) -> void:
 	if data == null:
 		return
@@ -33,21 +26,14 @@ func assign(data: CardResource) -> void:
 
 func clear() -> void:
 	card = null
-	if icon_rect: icon_rect.modulate.a = 0.0
+	if icon_rect:
+		icon_rect.modulate.a = 0.0
 
 func _apply_icon(texture: Texture2D) -> void:
 	icon_rect.texture = texture
 	icon_rect.modulate.a = 1.0
 
-# handlers
-func _on_button_pressed() -> void:
-	if card == null:
-		return
-	discard_request.emit(card)
-	clear()
-
-
-# visuals
+# --- Visuals ---
 func drop_in() -> void:
 	_kill_tween()
 	icon_rect.position.y = drop_offset.y

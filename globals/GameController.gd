@@ -1,7 +1,7 @@
 extends Node
 
-@onready var current_decks: Dictionary[String,Deck]
+var deck_scene: PackedScene = preload("res://scenes/scene_components/deck/deck.tscn")
+var current_decks: Dictionary[String, DeckResource] = {}
 
-func _ready() -> void:
-	#preload xyz
-	pass
+func unload_deck(deck_id: String) -> void:
+	current_decks.erase(deck_id)

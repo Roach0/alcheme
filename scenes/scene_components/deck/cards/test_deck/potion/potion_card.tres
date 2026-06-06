@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://domjr81ysswlf"]
+
+[ext_resource type="Script" uid="uid://c71xpo357466s" path="res://resource_classes/effect_resource.gd" id="1_00qor"]
+[ext_resource type="Texture2D" uid="uid://dutpdj6cmrqal" path="res://assets/slot_icons/Alchemy_Potion_Vial_Bottle_Large_Round_Full.png" id="2_58as5"]
+[ext_resource type="Script" uid="uid://ba27sa137jhjv" path="res://resource_classes/card_resource.gd" id="3_tagef"]
+
+[resource]
+script = ExtResource("3_tagef")
+card_name = "Drag"
+icon = ExtResource("2_58as5")
+effect_description = "Restore Nerve"
+metadata/_custom_type_script = "uid://ba27sa137jhjv"

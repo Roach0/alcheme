@@ -1,12 +1,14 @@
 extends Node
 
-@onready var queue: CardQueue
-@onready var deck_container: Deck
-@onready var effects: Effects
+@onready var queue: CardQueue = $Effects/Layout/CardQueue
+@onready var deck_container = $Effects/DeckQueue
+@onready var effects: Effects = $Effects
 
-var deck_scene:Deck
+@export var deck_scene: PackedScene
 
-func _ready():
+func _ready() -> void:
+	var test = preload("res://scenes/scene_components/deck/cards/test_deck/test_deck.tres")
+	GameController.current_decks["test_deck"] = test
 	queue.discard.connect(_on_discard)
 	player_panel_assembly(GameController.current_decks)
  
@@ -21,12 +23,11 @@ func is_queue_full() -> bool:
 # scene builders
 func player_panel_assembly(decks: Dictionary) -> void:
 	for deck_id in decks:
-		var d = deck_scene.instantiate()
+		var d = GameController.deck_scene.instantiate()
 		deck_container.add_child(d)
 		d.deck_id = deck_id
 		d.deck_data = decks[deck_id]
 		d.draw_request.connect(_on_draw_request)
-
 
 # handlers
 func _on_draw_request(deck: Deck) -> void:
@@ -35,6 +36,7 @@ func _on_draw_request(deck: Deck) -> void:
 	var card = deck.draw_card()
 	if card == null:
 		return
+	queue.add_card(card)   # ← this line was missing
 
 func _on_discard(card: CardResource) -> void:
 	for child in deck_container.get_children():
