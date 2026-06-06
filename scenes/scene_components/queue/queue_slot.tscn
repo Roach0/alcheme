@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b68ke838cjr7b"]
+
+[ext_resource type="Script" uid="uid://yyywme8y3taq" path="res://scenes/scene_components/queue/queue_slot.gd" id="1_e7y77"]
+
+[node name="QueueSlot" type="MarginContainer" unique_id=1855721455]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = -1
+anchor_right = 0.56200004
+anchor_bottom = 1.0
+offset_right = 0.57592773
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_e7y77")
+
+[node name="Layout" type="VBoxContainer" parent="." unique_id=628001938]
+layout_mode = 2
+
+[node name="BG" type="TextureRect" parent="Layout" unique_id=1155519685]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 3
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="." unique_id=303915704]
+layout_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

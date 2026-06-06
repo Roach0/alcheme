@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UpdateNerve" format=3 uid="uid://b4q5g24w78mri"]
+
+[ext_resource type="Script" uid="uid://ct2ycnnwsp0g0" path="res://scenes/scene_components/deck/cards/effects/base_effects/update_nerve.gd" id="1_bjsaa"]
+
+[resource]
+script = ExtResource("1_bjsaa")
+stat_target = "nerve"
+amount = 5
+effect_description = "+ 5 Nerve"
+metadata/_custom_type_script = "uid://ct2ycnnwsp0g0"

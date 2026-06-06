@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://hd2awyu7v6iy"]
+
+[ext_resource type="Script" uid="uid://c71xpo357466s" path="res://resource_classes/effect_resource.gd" id="1_bqsgh"]
+[ext_resource type="Texture2D" path="res://migrate/slot_icons/Misc_Syringe_Drugs_Medicine_2.png" id="2_0xvou"]
+[ext_resource type="Script" uid="uid://ba27sa137jhjv" path="res://resource_classes/card_resource.gd" id="2_fpkf1"]
+
+[resource]
+script = ExtResource("2_fpkf1")
+trigger = 1
+card_name = "Adrenaline"
+icon = ExtResource("2_0xvou")
+metadata/_custom_type_script = "uid://ba27sa137jhjv"

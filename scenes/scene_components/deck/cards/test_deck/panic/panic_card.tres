@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://bmrdncr14rkiv"]
+
+[ext_resource type="Script" uid="uid://c71xpo357466s" path="res://resource_classes/effect_resource.gd" id="1_0ux2u"]
+[ext_resource type="Resource" uid="uid://ddirli36laew6" path="res://scenes/scene_components/deck/cards/test_deck/panic/panic_queue_lock.tres" id="2_vh503"]
+[ext_resource type="Script" uid="uid://ba27sa137jhjv" path="res://resource_classes/card_resource.gd" id="3_07no7"]
+[ext_resource type="Texture2D" path="res://migrate/slot_icons/Emoji_Face_Surprised_Shocked.png" id="3_vh503"]
+
+[resource]
+script = ExtResource("3_07no7")
+effects = Array[ExtResource("1_0ux2u")]([ExtResource("2_vh503")])
+card_name = "Panic!"
+icon = ExtResource("3_vh503")
+effect_description = "New guy!"
+metadata/_custom_type_script = "uid://ba27sa137jhjv"

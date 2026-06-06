@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardResource" format=3 uid="uid://domjr81ysswlf"]
+
+[ext_resource type="Script" uid="uid://c71xpo357466s" path="res://resource_classes/effect_resource.gd" id="1_00qor"]
+[ext_resource type="Texture2D" path="res://migrate/slot_icons/Travel_Cigarette_Tobaco_Smoking.png" id="2_fyeko"]
+[ext_resource type="Resource" uid="uid://c5amln77jtvpw" path="res://scenes/scene_components/deck/cards/test_deck/drag/drag_update_condition.tres" id="2_tagef"]
+[ext_resource type="Resource" uid="uid://b4q5g24w78mri" path="res://scenes/scene_components/deck/cards/test_deck/drag/drag_update_nerve.tres" id="3_onr5f"]
+[ext_resource type="Script" uid="uid://ba27sa137jhjv" path="res://resource_classes/card_resource.gd" id="3_tagef"]
+
+[resource]
+script = ExtResource("3_tagef")
+card_name = "Drag"
+icon = ExtResource("2_fyeko")
+effect_description = "Restore Nerve"
+target = 1
+effects = Array[ExtResource("1_00qor")]([ExtResource("2_tagef"), ExtResource("3_onr5f")])
+metadata/_custom_type_script = "uid://ba27sa137jhjv"

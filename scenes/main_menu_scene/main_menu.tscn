@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://sdqya7k7ecd3"]
+
+[ext_resource type="Script" uid="uid://burbyi1w4abcq" path="res://scenes/main_menu_scene/main_menu.gd" id="1_fsom3"]
+
+[node name="MainMenu" type="Control" unique_id=2022794378]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fsom3")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1105799172]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1619147373]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=770863599]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Project: Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="MarginContainer/VBoxContainer" unique_id=217080869]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Start" unique_id=919698865]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Load" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2098290465]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Load" unique_id=578700257]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Load"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer" unique_id=319779687]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Settings" unique_id=1743727106]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]

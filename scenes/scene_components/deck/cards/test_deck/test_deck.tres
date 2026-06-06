@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DeckResource" format=3 uid="uid://bvl83y82sbggd"]
+
+[ext_resource type="Script" uid="uid://ba27sa137jhjv" path="res://resource_classes/card_resource.gd" id="1_hmxdq"]
+[ext_resource type="Script" uid="uid://bhoskfk2uo1s0" path="res://scenes/scene_components/deck/deck_resource.gd" id="2_2togf"]
+[ext_resource type="Resource" uid="uid://domjr81ysswlf" path="res://scenes/scene_components/deck/cards/test_deck/drag/drag_card.tres" id="2_yfvjq"]
+[ext_resource type="Resource" uid="uid://bmrdncr14rkiv" path="res://scenes/scene_components/deck/cards/test_deck/panic/panic_card.tres" id="3_yfvjq"]
+
+[resource]
+script = ExtResource("2_2togf")
+cards = Array[ExtResource("1_hmxdq")]([ExtResource("2_yfvjq"), ExtResource("2_yfvjq"), ExtResource("2_yfvjq"), ExtResource("2_yfvjq"), ExtResource("2_yfvjq"), ExtResource("2_yfvjq"), ExtResource("3_yfvjq"), ExtResource("3_yfvjq"), ExtResource("3_yfvjq")])
+metadata/_custom_type_script = "uid://bhoskfk2uo1s0"
