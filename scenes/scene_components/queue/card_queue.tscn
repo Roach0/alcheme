@@ -35,6 +35,12 @@ layout_mode = 2
 [node name="Slot5" parent="Layout/Row1" unique_id=1992712346 instance=ExtResource("2_nx0cm")]
 layout_mode = 2
 
+[node name="Slot6" parent="Layout/Row1" unique_id=1855721455 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot7" parent="Layout/Row1" unique_id=1143756821 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
 [node name="Row2" type="HBoxContainer" parent="Layout" unique_id=1863879997]
 layout_mode = 2
 size_flags_vertical = 3
@@ -52,6 +58,12 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Slot5" parent="Layout/Row2" unique_id=77355674 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot6" parent="Layout/Row2" unique_id=162256207 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot7" parent="Layout/Row2" unique_id=278706132 instance=ExtResource("2_nx0cm")]
 layout_mode = 2
 
 [node name="Row3" type="HBoxContainer" parent="Layout" unique_id=894265042]
@@ -73,6 +85,12 @@ layout_mode = 2
 [node name="Slot5" parent="Layout/Row3" unique_id=262331582 instance=ExtResource("2_nx0cm")]
 layout_mode = 2
 
+[node name="Slot6" parent="Layout/Row3" unique_id=822314245 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot7" parent="Layout/Row3" unique_id=626001590 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
 [node name="Row4" type="HBoxContainer" parent="Layout" unique_id=1765320011]
 layout_mode = 2
 size_flags_vertical = 3
@@ -90,4 +108,85 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Slot5" parent="Layout/Row4" unique_id=1777812834 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot6" parent="Layout/Row4" unique_id=65063213 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot7" parent="Layout/Row4" unique_id=2030888351 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Row5" type="HBoxContainer" parent="Layout" unique_id=1091207087]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Slot1" parent="Layout/Row5" unique_id=897338045 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot2" parent="Layout/Row5" unique_id=423161894 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot3" parent="Layout/Row5" unique_id=511945928 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot4" parent="Layout/Row5" unique_id=1721311682 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot5" parent="Layout/Row5" unique_id=1727423465 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot6" parent="Layout/Row5" unique_id=2062858622 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot7" parent="Layout/Row5" unique_id=880503161 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Row6" type="HBoxContainer" parent="Layout" unique_id=1397798311]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Slot1" parent="Layout/Row6" unique_id=1301301060 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot2" parent="Layout/Row6" unique_id=134683785 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot3" parent="Layout/Row6" unique_id=1524293289 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot4" parent="Layout/Row6" unique_id=29967684 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot5" parent="Layout/Row6" unique_id=2044839918 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot6" parent="Layout/Row6" unique_id=1581012404 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot7" parent="Layout/Row6" unique_id=366393589 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Row7" type="HBoxContainer" parent="Layout" unique_id=1158335534]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Slot1" parent="Layout/Row7" unique_id=634496022 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot2" parent="Layout/Row7" unique_id=309875486 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot3" parent="Layout/Row7" unique_id=1639458711 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot4" parent="Layout/Row7" unique_id=768193448 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot5" parent="Layout/Row7" unique_id=1389292358 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot6" parent="Layout/Row7" unique_id=1066604933 instance=ExtResource("2_nx0cm")]
+layout_mode = 2
+
+[node name="Slot7" parent="Layout/Row7" unique_id=180814516 instance=ExtResource("2_nx0cm")]
 layout_mode = 2

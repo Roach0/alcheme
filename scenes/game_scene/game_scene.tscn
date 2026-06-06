@@ -29,7 +29,7 @@ script = ExtResource("2_ducuf")
 [node name="S1" type="HSeparator" parent="Effects" unique_id=1684931729]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.95
+size_flags_stretch_ratio = 0.4
 theme_override_styles/separator = SubResource("StyleBoxEmpty_o81xq")
 
 [node name="Layout" type="HBoxContainer" parent="Effects" unique_id=937662508]
@@ -65,7 +65,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_ducuf")
 [node name="S2" type="HSeparator" parent="Effects" unique_id=411533269]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_o81xq")
 
 [node name="DeckQueue" type="HBoxContainer" parent="Effects" unique_id=757534180]
