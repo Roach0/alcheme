@@ -36,37 +36,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Health" type="Label" parent="Layout/S1/VBoxContainer" unique_id=1635463221]
-layout_mode = 2
-text = "Health:"
-
-[node name="Energy" type="Label" parent="Layout/S1/VBoxContainer" unique_id=1929676323]
-layout_mode = 2
-text = "Energy:"
-
-[node name="Sanity" type="Label" parent="Layout/S1/VBoxContainer" unique_id=686554667]
-layout_mode = 2
-text = "Sanity:"
-
-[node name="Wood" type="Label" parent="Layout/S1/VBoxContainer" unique_id=1316057921]
-layout_mode = 2
-text = "Wood:"
-
-[node name="Food" type="Label" parent="Layout/S1/VBoxContainer" unique_id=376841001]
-layout_mode = 2
-text = "Food:"
-
-[node name="Gold" type="Label" parent="Layout/S1/VBoxContainer" unique_id=490378158]
+[node name="Label" type="Label" parent="Layout/S1/VBoxContainer" unique_id=490378158]
 layout_mode = 2
 text = "Gold:"
-
-[node name="Ore" type="Label" parent="Layout/S1/VBoxContainer" unique_id=217409112]
-layout_mode = 2
-text = "Ore:"
-
-[node name="Ingot" type="Label" parent="Layout/S1/VBoxContainer" unique_id=361785133]
-layout_mode = 2
-text = "Ingot:"
 
 [node name="CardQueue" parent="Layout" unique_id=476772842 instance=ExtResource("2_xb203")]
 layout_mode = 2

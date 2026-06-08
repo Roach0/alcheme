@@ -1,8 +1,6 @@
 extends Node
 
-@onready var queue: CardQueue = $Effects/Layout/CardQueue
-@onready var deck_container = $Effects/DeckQueue
-@onready var effects: Effects = $Effects
+@onready var queue: CardQueue = $Layout/CardQueue
 
 @export var deck_scene: PackedScene
 
@@ -15,19 +13,19 @@ func _ready() -> void:
 # queries
 func is_queue_full() -> bool:
 	if queue == null:
-		push_warning("MissionManager: queue is null")
 		return false
 	return queue.is_full()
 
 
 # scene builders
 func player_panel_assembly(decks: Dictionary) -> void:
-	for deck_id in decks:
-		var d = GameController.deck_scene.instantiate()
-		deck_container.add_child(d)
-		d.deck_id = deck_id
-		d.deck_data = decks[deck_id]
-		d.draw_request.connect(_on_draw_request)
+	pass
+	#for deck_id in decks:
+	#	var d = GameController.deck_scene.instantiate()
+	#	deck_container.add_child(d)
+	#	d.deck_id = deck_id
+	#	d.deck_data = decks[deck_id]
+	#	d.draw_request.connect(_on_draw_request)
 
 # handlers
 func _on_draw_request(deck: Deck) -> void:
@@ -39,11 +37,12 @@ func _on_draw_request(deck: Deck) -> void:
 	queue.add_card(card)   # ← this line was missing
 
 func _on_discard(card: CardResource) -> void:
-	for child in deck_container.get_children():
-		if child.deck_id == card.source_deck_id:
-			child.discard(card)
-			return
-	push_warning("MissionManager: no deck found for source_deck_id '%s'" % card.source_deck_id)
+	pass
+#	for child in deck_container.get_children():
+#		if child.deck_id == card.source_deck_id:
+#			child.discard(card)
+#			return
+#	push_warning("MissionManager: no deck found for source_deck_id '%s'" % card.source_deck_id)
 
 func _on_action_button_pressed() -> void:
 	pass # Replace with function body.
@@ -51,8 +50,9 @@ func _on_action_button_pressed() -> void:
 
 # methods
 func remove_deck(deck_id: String) -> void:
-	GameController.unload_deck(deck_id)
-	for child in deck_container.get_children():
-		if child.deck_id == deck_id:
-			child.queue_free()
-			break
+	pass
+#	GameController.unload_deck(deck_id)
+#	for child in deck_container.get_children():
+#		if child.deck_id == deck_id:
+#			child.queue_free()
+#			break
