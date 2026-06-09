@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TileResource" format=3 uid="uid://dcca1vm0v8uyk"]
+
+[ext_resource type="Script" uid="uid://ba27sa137jhjv" path="res://resource_classes/tile_resource.gd" id="1_jyjby"]
+[ext_resource type="Texture2D" uid="uid://cmpovp0k4iofg" path="res://scenes/components/tiles/tree/icons/Map_Markers_Tree_Forest.png" id="1_wpxjl"]
+[ext_resource type="Texture2D" uid="uid://cj1uugfv3ffng" path="res://scenes/components/tiles/tree/icons/Map_Markers_Tree_Forest_Decidous_1.png" id="2_s8bg8"]
+[ext_resource type="Texture2D" uid="uid://db7a35kaksyst" path="res://scenes/components/tiles/tree/icons/Map_Markers_Tree_Forest_Decidous_2.png" id="3_o3via"]
+[ext_resource type="Texture2D" uid="uid://bpk3rmmhg2fb2" path="res://scenes/components/tiles/tree/icons/Map_Markers_Tree_Forest_Pine.png" id="4_s8bg8"]
+
+[resource]
+script = ExtResource("1_jyjby")
+name = "Tree"
+alignment = "Neutral"
+icons = Array[Texture2D]([ExtResource("1_wpxjl"), ExtResource("2_s8bg8"), ExtResource("3_o3via"), ExtResource("4_s8bg8")])
+metadata/_custom_type_script = "uid://ba27sa137jhjv"

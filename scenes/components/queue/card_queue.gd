@@ -1,4 +1,4 @@
-class_name CardQueue
+class_name TileQueue
 extends MarginContainer
 
 @onready var grid: Dictionary = {
@@ -17,6 +17,8 @@ extends MarginContainer
 	13: [null, null, null, null, null, null, null, null, null, null, null, null, null],
 }
 
+@export var map_preset: MapResource = null
+
 var active_row: int = 1
 var pending_slot: Vector2i = Vector2i(-1, -1)
 signal queue_is_full
@@ -32,17 +34,23 @@ func _ready() -> void:
 				btn.modulate.a = 0.3
 				btn.pressed.connect(_on_queue_button_pressed.bind(btn))
 	setup.emit()
-	_pick_pending_slot()
+	if map_preset:
+		await get_tree().process_frame
+		load_map(map_preset)
+	else:
+		_pick_pending_slot()
+
 
 # --- Grid Helpers ---
 func _grid_row() -> Array:
 	return grid[active_row]
 
-func _write_to_grid(row: int, index: int, card: CardResource) -> void:
-	grid[row][index] = card
+func _write_to_grid(row: int, index: int, tile: TileResource) -> void:
+	grid[row][index] = tile
 
 func _clear_from_grid(row: int, index: int) -> void:
 	grid[row][index] = null
+
 
 # --- Queries ---
 func _next_open_slot() -> Vector2i:
@@ -63,12 +71,13 @@ func open_slots() -> Array:
 					empties.append(node)
 	return empties
 
-func _find_slot_index(card: CardResource) -> Vector2i:
+func _find_slot_index(tile: TileResource) -> Vector2i:
 	for row in range(1, grid.size() + 1):
-		var idx = grid[row].find(card)
+		var idx = grid[row].find(tile)
 		if idx != -1:
 			return Vector2i(row, idx)
 	return Vector2i(-1, -1)
+
 
 # --- Pending / Highlight ---
 func _set_pending_slot(target: Vector2i) -> void:
@@ -94,8 +103,34 @@ func _pick_pending_slot() -> void:
 		return
 	_set_pending_slot(open[randi() % open.size()])
 
+
+# --- Map Loading ---
+func load_map(map: MapResource) -> void:
+	print("=== load_map start ===")
+	for row in range(1, grid.size() + 1):
+		for i in range(grid[row].size()):
+			var tile: TileResource = map.get_tile(row, i)
+			print("row %d col %d -> %s" % [row, i, tile])
+			if tile == null:
+				continue
+			var slot_number = i + 1
+			var slot = get_node_or_null("Layout/Row%d/Slot%d" % [row, slot_number])
+			var button = get_node_or_null("Layout/Row%d/Slot%d/Button" % [row, slot_number])
+			print("  slot: %s  button: %s" % [slot, button])
+			if not slot or not button:
+				push_error("TileQueue.load_map: missing node row %d slot %d" % [row, slot_number])
+				continue
+			grid[row][i] = tile
+			slot.button = button
+			slot.assign(tile)
+			button.mouse_filter = Control.MOUSE_FILTER_STOP
+			button.modulate.a = 0.3
+	_pick_pending_slot()
+	print("=== load_map end ===")
+
+
 # --- Methods ---
-func add_card(card: CardResource) -> Node:
+func add_tile(tile: TileResource) -> Node:
 	if is_full():
 		queue_is_full.emit()
 		return null
@@ -106,25 +141,25 @@ func add_card(card: CardResource) -> Node:
 	var slot = get_node_or_null("Layout/Row%d/Slot%d" % [row, slot_number])
 	var button = get_node_or_null("Layout/Row%d/Slot%d/Button" % [row, slot_number])
 	if not slot or not button:
-		push_error("CardQueue: missing node for row %d slot %d" % [row, slot_number])
+		push_error("TileQueue: missing node for row %d slot %d" % [row, slot_number])
 		return null
-	grid[row][index] = card
+	grid[row][index] = tile
 	pending_slot = Vector2i(-1, -1)
-	button.modulate.a = 0.3  # reset before picking a new pending slot
+	button.modulate.a = 0.3
 	slot.button = button
-	slot.assign(card)
+	slot.assign(tile)
 	button.mouse_filter = Control.MOUSE_FILTER_STOP
 	_pick_pending_slot()
 	return slot
 
-func remove_card(button: Button) -> void:
+func remove_tile(button: Button) -> void:
 	var slot = button.get_parent()
 	var row_node = slot.get_parent()
 	var slot_number = int(slot.name.lstrip("Slot"))
 	var row_number = int(row_node.name.lstrip("Row"))
-	var card = slot.card
+	var tile = slot.card
 	grid[row_number][slot_number - 1] = null
-	discard.emit(card)
+	discard.emit(tile)
 	button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	button.modulate.a = 0.3
 	slot.is_clearing = true
@@ -143,12 +178,14 @@ func lock_queue_slot(slot: Node) -> void:
 		button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		button.modulate.a = 0.5
 
+
 # --- Debug Utility ---
 func print_grid() -> void:
 	for row in grid:
-		var row_str = grid[row].map(func(c): return c.name if c else "·")
+		var row_str = grid[row].map(func(t): return t.name if t else "·")
 		print("Row %d: %s" % [row, ", ".join(row_str)])
+
 
 # --- Handlers ---
 func _on_queue_button_pressed(button: Button) -> void:
-	remove_card(button)
+	remove_tile(button)

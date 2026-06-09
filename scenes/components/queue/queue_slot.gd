@@ -3,26 +3,31 @@ extends MarginContainer
 @onready var icon_rect = $Layout/BG
 @export var drop_offset: Vector2 = Vector2(0, -300)
 @export var duration: float = 0.55
-var card: CardResource = null
+var card: TileResource = null
 var button: Button = null
 var _active_tween: Tween = null
 var is_clearing: bool = false
 
 func _ready() -> void:
 	icon_rect.z_index = 1
-	clear()
+	if card == null:
+		clear()
 
 # --- Queries ---
 func is_empty() -> bool:
 	return card == null and not is_clearing
 
 # --- Data Methods ---
-func assign(data: CardResource) -> void:
+func assign(data: TileResource) -> void:
 	if data == null:
 		return
-	card = data
+	card = data.duplicate()  # <-- break the shared reference
+	card._randomize_icon()   # <-- then randomize on the fresh copy
+	if not is_node_ready():
+		await ready
 	drop_in()
-	_apply_icon(data.icon)
+	_apply_icon(card.get_icon())
+	icon_rect.modulate.a = 1.0
 
 func clear() -> void:
 	card = null
