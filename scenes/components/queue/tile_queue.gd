@@ -1,6 +1,8 @@
 class_name TileQueue
 extends MarginContainer
 
+signal tile_clicked(tile: TileResource, button: Button, result: Dictionary)
+
 @onready var grid: Dictionary = {
 	1: [null, null, null, null, null, null, null, null, null, null, null, null, null],
 	2: [null, null, null, null, null, null, null, null, null, null, null, null, null],
@@ -23,7 +25,6 @@ var active_row: int = 1
 var pending_slot: Vector2i = Vector2i(-1, -1)
 signal queue_is_full
 signal discard
-signal setup
 
 func _ready() -> void:
 	for row in grid:
@@ -33,7 +34,6 @@ func _ready() -> void:
 				btn.mouse_filter = Control.MOUSE_FILTER_IGNORE
 				btn.modulate.a = 0.3
 				btn.pressed.connect(_on_queue_button_pressed.bind(btn))
-	setup.emit()
 	if map_preset:
 		await get_tree().process_frame
 		load_map(map_preset)
@@ -157,7 +157,7 @@ func remove_tile(button: Button) -> void:
 	var row_node = slot.get_parent()
 	var slot_number = int(slot.name.lstrip("Slot"))
 	var row_number = int(row_node.name.lstrip("Row"))
-	var tile = slot.card
+	var tile = slot.tile
 	grid[row_number][slot_number - 1] = null
 	discard.emit(tile)
 	button.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -188,4 +188,15 @@ func print_grid() -> void:
 
 # --- Handlers ---
 func _on_queue_button_pressed(button: Button) -> void:
-	remove_tile(button)
+	var slot = button.get_parent()
+	var tile = slot.tile  # this is the live duplicate on the slot
+	if tile == null:
+		return
+	if tile.has_method("_click"):
+		var result = tile._click()
+		tile_clicked.emit(tile, button, result)
+		if result.get("destroyed", false):
+			remove_tile(button)
+	else:
+		print("this is happening instead huh")
+		remove_tile(button)

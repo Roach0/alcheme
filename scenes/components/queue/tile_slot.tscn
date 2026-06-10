@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b68ke838cjr7b"]
 
-[ext_resource type="Script" uid="uid://yyywme8y3taq" path="res://scenes/components/queue/queue_slot.gd" id="1_e7y77"]
+[ext_resource type="Script" uid="uid://yyywme8y3taq" path="res://scenes/components/queue/tile_slot.gd" id="1_3g1qg"]
 
 [node name="QueueSlot" type="MarginContainer" unique_id=1855721455]
 custom_minimum_size = Vector2(35, 35)
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-script = ExtResource("1_e7y77")
+script = ExtResource("1_3g1qg")
 
 [node name="Layout" type="VBoxContainer" parent="." unique_id=628001938]
 layout_mode = 2

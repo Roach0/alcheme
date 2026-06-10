@@ -1,36 +1,40 @@
 extends MarginContainer
+class_name TileSlot
 
 @onready var icon_rect = $Layout/BG
 @export var drop_offset: Vector2 = Vector2(0, -300)
 @export var duration: float = 0.55
-var card: TileResource = null
+var tile: TileResource = null
 var button: Button = null
 var _active_tween: Tween = null
 var is_clearing: bool = false
 
 func _ready() -> void:
 	icon_rect.z_index = 1
-	if card == null:
+	if tile == null:
 		clear()
 
 # --- Queries ---
 func is_empty() -> bool:
-	return card == null and not is_clearing
+	return tile == null and not is_clearing
 
 # --- Data Methods ---
 func assign(data: TileResource) -> void:
 	if data == null:
 		return
-	card = data.duplicate()  # <-- break the shared reference
-	card._randomize_icon()   # <-- then randomize on the fresh copy
+	# Create a fresh instance of the same script class so runtime vars are clean
+	tile = data.duplicate(true)
+	if tile.has_method("_post_duplicate"):
+		tile._post_duplicate()
+	tile._randomize_icon()
 	if not is_node_ready():
 		await ready
 	drop_in()
-	_apply_icon(card.get_icon())
+	_apply_icon(tile.get_icon())
 	icon_rect.modulate.a = 1.0
 
 func clear() -> void:
-	card = null
+	tile = null
 	if icon_rect:
 		icon_rect.modulate.a = 0.0
 
@@ -62,3 +66,7 @@ func _kill_tween() -> void:
 	if _active_tween and _active_tween.is_running():
 		_active_tween.kill()
 	_active_tween = null
+
+func update_hp_display(current: int, max_hp: int) -> void:
+	var pct = float(current) / float(max_hp)
+	icon_rect.modulate = Color(1.0, pct, pct, 1.0)  # reddens as HP falls

@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://3p47p4n74y3h"]
 
 [ext_resource type="Script" uid="uid://bwncmo1u8d35" path="res://scenes/game_scene/game_scene.gd" id="1_o81xq"]
-[ext_resource type="PackedScene" uid="uid://d0jar4dpikg7l" path="res://scenes/components/queue/card_queue.tscn" id="2_xb203"]
+[ext_resource type="PackedScene" uid="uid://biprp0f2jwa42" path="res://scenes/components/queue/tile_queue.tscn" id="2_72663"]
+[ext_resource type="Script" uid="uid://bu4bt4kprary4" path="res://scenes/game_scene/player.gd" id="2_o81xq"]
+[ext_resource type="Script" uid="uid://dtx4ni4tf43qf" path="res://scenes/game_scene/effects.gd" id="2_xb203"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xb203"]
 
@@ -21,6 +23,7 @@ script = ExtResource("1_o81xq")
 
 [node name="Effects" type="HBoxContainer" parent="." unique_id=937662508]
 layout_mode = 2
+script = ExtResource("2_xb203")
 
 [node name="S1" type="VSeparator" parent="Effects" unique_id=2038510296]
 layout_mode = 2
@@ -29,12 +32,14 @@ size_flags_stretch_ratio = 1.5
 theme_override_styles/separator = SubResource("StyleBoxEmpty_xb203")
 
 [node name="Player" type="VBoxContainer" parent="Effects/S1" unique_id=437081925]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_o81xq")
 
 [node name="Health" type="Label" parent="Effects/S1/Player" unique_id=1635463221]
 layout_mode = 2
@@ -50,7 +55,6 @@ text = "Sanity:"
 
 [node name="Wood" type="Label" parent="Effects/S1/Player" unique_id=1316057921]
 layout_mode = 2
-text = "Wood:"
 
 [node name="Food" type="Label" parent="Effects/S1/Player" unique_id=376841001]
 layout_mode = 2
@@ -71,11 +75,8 @@ text = "Ingot:"
 [node name="Label" type="Label" parent="Effects/S1/Player" unique_id=1468368687]
 layout_mode = 2
 
-[node name="CardQueue" parent="Effects" unique_id=476772842 instance=ExtResource("2_xb203")]
+[node name="TileQueue" parent="Effects" unique_id=476772842 instance=ExtResource("2_72663")]
 layout_mode = 2
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 30
 
 [node name="S2" type="VSeparator" parent="Effects" unique_id=1887214050]
 layout_mode = 2

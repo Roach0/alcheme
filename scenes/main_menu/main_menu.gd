@@ -1,4 +1,5 @@
 extends Control
+class_name MainMenu
 
 func _ready() -> void:
 	pass
