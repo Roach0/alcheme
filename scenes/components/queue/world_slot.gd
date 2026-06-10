@@ -1,5 +1,5 @@
 extends MarginContainer
-class_name TileSlot
+class_name WorldSlot
 
 @onready var icon_rect = $Layout/BG
 @export var drop_offset: Vector2 = Vector2(0, -300)

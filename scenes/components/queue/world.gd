@@ -1,4 +1,4 @@
-class_name TileQueue
+class_name World
 extends MarginContainer
 
 signal tile_clicked(tile: TileResource, button: Button, result: Dictionary)
@@ -19,7 +19,6 @@ signal tile_clicked(tile: TileResource, button: Button, result: Dictionary)
 	13: [null, null, null, null, null, null, null, null, null, null, null, null, null],
 }
 
-@export var map_preset: MapResource = null
 
 var active_row: int = 1
 var pending_slot: Vector2i = Vector2i(-1, -1)
@@ -34,11 +33,6 @@ func _ready() -> void:
 				btn.mouse_filter = Control.MOUSE_FILTER_IGNORE
 				btn.modulate.a = 0.3
 				btn.pressed.connect(_on_queue_button_pressed.bind(btn))
-	if map_preset:
-		await get_tree().process_frame
-		load_map(map_preset)
-	else:
-		_pick_pending_slot()
 
 
 # --- Grid Helpers ---
@@ -103,27 +97,6 @@ func _pick_pending_slot() -> void:
 		return
 	_set_pending_slot(open[randi() % open.size()])
 
-
-# --- Map Loading ---
-func load_map(map: MapResource) -> void:
-	print("=== load_map start ===")
-	for row in range(1, grid.size() + 1):
-		for i in range(grid[row].size()):
-			var tile: TileResource = map.get_tile(row, i)
-			if tile == null:
-				continue
-			var slot_number = i + 1
-			var slot = get_node_or_null("Layout/Row%d/Slot%d" % [row, slot_number])
-			var button = get_node_or_null("Layout/Row%d/Slot%d/Button" % [row, slot_number])
-			if not slot or not button:
-				push_error("TileQueue.load_map: missing node row %d slot %d" % [row, slot_number])
-				continue
-			grid[row][i] = tile
-			slot.button = button
-			slot.assign(tile)
-			button.mouse_filter = Control.MOUSE_FILTER_STOP
-			button.modulate.a = 0.3
-	_pick_pending_slot()
 
 
 # --- Methods ---

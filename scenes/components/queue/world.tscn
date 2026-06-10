@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://biprp0f2jwa42"]
 
-[ext_resource type="Script" path="res://scenes/components/queue/tile_queue.gd" id="1_3ncrb"]
-[ext_resource type="PackedScene" uid="uid://b68ke838cjr7b" path="res://scenes/components/queue/tile_slot.tscn" id="2_nx0cm"]
+[ext_resource type="Script" uid="uid://bg1wta0d45iiu" path="res://scenes/components/queue/world.gd" id="1_3ncrb"]
+[ext_resource type="PackedScene" uid="uid://b68ke838cjr7b" path="res://scenes/components/queue/world_slot.tscn" id="2_nx0cm"]
 
 [node name="CardQueue" type="MarginContainer" unique_id=476772842]
 anchors_preset = 15

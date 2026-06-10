@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://3p47p4n74y3h"]
 
 [ext_resource type="Script" uid="uid://bwncmo1u8d35" path="res://scenes/game_scene/game_scene.gd" id="1_o81xq"]
-[ext_resource type="PackedScene" uid="uid://biprp0f2jwa42" path="res://scenes/components/queue/tile_queue.tscn" id="2_72663"]
+[ext_resource type="PackedScene" uid="uid://biprp0f2jwa42" path="res://scenes/components/queue/world.tscn" id="2_72663"]
 [ext_resource type="Script" uid="uid://bu4bt4kprary4" path="res://scenes/game_scene/player.gd" id="2_o81xq"]
 [ext_resource type="Script" uid="uid://dtx4ni4tf43qf" path="res://scenes/game_scene/effects.gd" id="2_xb203"]
 
@@ -75,7 +75,7 @@ text = "Ingot:"
 [node name="Label" type="Label" parent="Effects/S1/Player" unique_id=1468368687]
 layout_mode = 2
 
-[node name="TileQueue" parent="Effects" unique_id=476772842 instance=ExtResource("2_72663")]
+[node name="World" parent="Effects" unique_id=476772842 instance=ExtResource("2_72663")]
 layout_mode = 2
 
 [node name="S2" type="VSeparator" parent="Effects" unique_id=1887214050]
