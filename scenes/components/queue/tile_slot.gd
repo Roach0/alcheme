@@ -20,10 +20,13 @@ func is_empty() -> bool:
 
 # --- Data Methods ---
 func assign(data: TileResource) -> void:
+	print("assign() incoming script: ", data.get_script())
 	if data == null:
 		return
-	# Create a fresh instance of the same script class so runtime vars are clean
 	tile = data.duplicate(true)
+	# Restore the subclass script that duplicate() dropped
+	if tile.get_script() != data.get_script():
+		tile.set_script(data.get_script())
 	if tile.has_method("_post_duplicate"):
 		tile._post_duplicate()
 	tile._randomize_icon()

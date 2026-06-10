@@ -1,11 +1,11 @@
 extends TileResource
 class_name Trees
 
-@export var max_hp: int = 3
+@export var max_hp: int = 10
 @export var wood_per_click: int = 1
 @export var wood_on_destroy: int = 5
 
-var current_hp: int = 0
+var current_hp: int = 10
 
 func _post_duplicate() -> void:
 	current_hp = max_hp

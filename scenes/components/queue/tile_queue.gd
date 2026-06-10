@@ -110,13 +110,11 @@ func load_map(map: MapResource) -> void:
 	for row in range(1, grid.size() + 1):
 		for i in range(grid[row].size()):
 			var tile: TileResource = map.get_tile(row, i)
-			print("row %d col %d -> %s" % [row, i, tile])
 			if tile == null:
 				continue
 			var slot_number = i + 1
 			var slot = get_node_or_null("Layout/Row%d/Slot%d" % [row, slot_number])
 			var button = get_node_or_null("Layout/Row%d/Slot%d/Button" % [row, slot_number])
-			print("  slot: %s  button: %s" % [slot, button])
 			if not slot or not button:
 				push_error("TileQueue.load_map: missing node row %d slot %d" % [row, slot_number])
 				continue
@@ -126,7 +124,6 @@ func load_map(map: MapResource) -> void:
 			button.mouse_filter = Control.MOUSE_FILTER_STOP
 			button.modulate.a = 0.3
 	_pick_pending_slot()
-	print("=== load_map end ===")
 
 
 # --- Methods ---
@@ -192,6 +189,8 @@ func _on_queue_button_pressed(button: Button) -> void:
 	var tile = slot.tile  # this is the live duplicate on the slot
 	if tile == null:
 		return
+	print("Tile class: ", tile.get_class(), " | Script: ", tile.get_script())
+	print("Has _click: ", tile.has_method("_click"))
 	if tile.has_method("_click"):
 		var result = tile._click()
 		tile_clicked.emit(tile, button, result)

@@ -1,21 +1,21 @@
 class_name MapResource
 extends Resource
 
-@export var row_1: Array[TileResource] = []
-@export var row_2: Array[TileResource] = []
-@export var row_3: Array[TileResource] = []
-@export var row_4: Array[TileResource] = []
-@export var row_5: Array[TileResource] = []
-@export var row_6: Array[TileResource] = []
-@export var row_7: Array[TileResource] = []
-@export var row_8: Array[TileResource] = []
-@export var row_9: Array[TileResource] = []
-@export var row_10: Array[TileResource] = []
-@export var row_11: Array[TileResource] = []
-@export var row_12: Array[TileResource] = []
-@export var row_13: Array[TileResource] = []
+@export var row_1: Array = []
+@export var row_2: Array = []
+@export var row_3: Array = []
+@export var row_4: Array = []
+@export var row_5: Array = []
+@export var row_6: Array = []
+@export var row_7: Array = []
+@export var row_8: Array = []
+@export var row_9: Array = []
+@export var row_10: Array = []
+@export var row_11: Array = []
+@export var row_12: Array = []
+@export var row_13: Array = []
 
-func get_tile(row_1indexed: int, col_0indexed: int) -> TileResource:
+func get_tile(row_1indexed: int, col_0indexed: int):  # no return type
 	var row = _get_row(row_1indexed)
 	if col_0indexed >= row.size():
 		return null
