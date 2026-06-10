@@ -13,7 +13,6 @@ config_version=5
 config/name="alk"
 run/main_scene="uid://sdqya7k7ecd3"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://assets/slot_icons/icon.svg"
 
 [autoload]
 
