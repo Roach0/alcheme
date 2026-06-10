@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxp3n4ewaci0o"
-path="res://.godot/imported/Map_Markers_Tree_Forest_Decidous_Branches.png-474c91166eac53ae1fa317dc47024dea.ctex"
+uid="uid://cinnek0bxitpy"
+path="res://.godot/imported/Map_Markers_Mountains_Hills_Cliffs_Terrain.png-008ce6470ce2ba6085de9a132401c48c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/components/tiles/tree/icons/Map_Markers_Tree_Forest_Decidous_Branches.png"
-dest_files=["res://.godot/imported/Map_Markers_Tree_Forest_Decidous_Branches.png-474c91166eac53ae1fa317dc47024dea.ctex"]
+source_file="res://scenes/components/tiles/mountain/icons/Map_Markers_Mountains_Hills_Cliffs_Terrain.png"
+dest_files=["res://.godot/imported/Map_Markers_Mountains_Hills_Cliffs_Terrain.png-008ce6470ce2ba6085de9a132401c48c.ctex"]
 
 [params]
 

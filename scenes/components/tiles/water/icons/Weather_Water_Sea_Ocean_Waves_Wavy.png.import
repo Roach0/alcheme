@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmpovp0k4iofg"
-path="res://.godot/imported/Map_Markers_Tree_Forest.png-6eb74ab8d114c36ba046b4f87e08864d.ctex"
+uid="uid://nylh0afoef7w"
+path="res://.godot/imported/Weather_Water_Sea_Ocean_Waves_Wavy.png-8719e1f76a6f16b4fa0425f503528da0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/components/tiles/tree/icons/Map_Markers_Tree_Forest.png"
-dest_files=["res://.godot/imported/Map_Markers_Tree_Forest.png-6eb74ab8d114c36ba046b4f87e08864d.ctex"]
+source_file="res://scenes/components/tiles/water/icons/Weather_Water_Sea_Ocean_Waves_Wavy.png"
+dest_files=["res://.godot/imported/Weather_Water_Sea_Ocean_Waves_Wavy.png-8719e1f76a6f16b4fa0425f503528da0.ctex"]
 
 [params]
 
